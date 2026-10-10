@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1a1e24" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#e8edf5" media="(prefers-color-scheme: light)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>E Club QR Utility Tool — Minimal Neumorphic Generator</title>
+  <meta name="description" content="E Club QR Utility tool: clean, minimal, neumorphic QR code generator with transparent background, custom palettes, and vector download.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="cube-icon.png">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- TOP MINIMAL NAVIGATION -->
+    <header class="neu-header">
+      <div class="header-left">
+        <div class="logo-box">
+          <img src="logo-dark.png" alt="E-Club Logo" id="brandLogo" class="brand-logo" width="190">
+        </div>
+      </div>
+
+      <div class="header-center">
+        <h1 class="main-title">E Club QR Utility Tool</h1>
+      </div>
+
+      <div class="header-right">
+        <!-- Eco impact badge -->
+        <div class="eco-badge" title="Sustainable Web Design: 100% Client-side, zero tracking">
+          <span class="eco-icon">🌱</span>
+          <span class="eco-text">Zero Carbon</span>
+        </div>
+
+        <!-- Audio mute toggle -->
+        <button id="audioToggle" class="neu-icon-btn" title="Toggle audio clicks (Shortcut: M)" aria-label="Toggle Audio">
+          <span id="audioIcon">🔊</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="neu-theme-btn" title="Toggle Light / Dark Theme (Shortcut: T)">
+          <span class="theme-icon-dark">🌙 Dark</span>
+          <span class="theme-icon-light">☀️ Light</span>
+          <span class="key-badge">T</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN TWO-COLUMN WORKSPACE -->
+    <main class="main-console">
+      
+      <!-- LEFT COLUMN: CONTROLS & STYLES -->
+      <section class="console-panel left-panel">
+        
+        <!-- 1. URL INPUT CARD -->
+        <div class="neu-card input-card">
+          <div class="card-title-row">
+            <h2 class="card-title">Enter your URL</h2>
+            <span class="char-count" id="charCounter">0 chars</span>
+          </div>
+          
+          <div class="neu-input-well">
+            <span class="input-icon">🔗</span>
+            <input 
+              type="url" 
+              id="urlInput" 
+              placeholder="Enter your URL here (e.g. https://...)" 
+              value=""
+              autocomplete="off" 
+              spellcheck="false"
+              autofocus
+            >
+            <div class="input-actions">
+              <button id="pasteBtn" class="neu-pill-btn" title="Paste from clipboard">
+                <span>Paste</span>
+              </button>
+              <button id="clearBtn" class="neu-pill-btn clear-btn" title="Clear input">
+                <span>✕</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Samples -->
+          <div class="sample-chips">
+            <span class="chips-label">Presets:</span>
+            <button class="sample-chip" data-sample="https://eclub.org">E-Club</button>
+            <button class="sample-chip" data-sample="https://linkedin.com/company/eclub">LinkedIn</button>
+            <button class="sample-chip" data-sample="https://instagram.com/eclub_hub">Instagram</button>
+            <button class="sample-chip" data-sample="https://github.com/eclub">GitHub</button>
+            <button class="sample-chip" data-sample="https://linktr.ee/eclub">Linktree</button>
+          </div>
+        </div>
+
+        <!-- 2. COLOR CUSTOMIZATION -->
+        <div class="neu-card card-color">
+          <div class="card-title-row">
+            <h2 class="card-title">QR Code Color</h2>
+            <span class="card-hint">Transparent background by default</span>
+          </div>
+
+          <!-- Color Mode: Solid vs Cyber Gradient -->
+          <div class="neu-segmented fill-mode-segmented">
+            <button class="neu-seg-btn active" id="fillSolidBtn" data-fill="solid">Solid Color</button>
+            <button class="neu-seg-btn" id="fillGradientBtn" data-fill="gradient">Gradient</button>
+          </div>
+
+          <!-- Preset Color Swatches -->
+          <div class="palette-grid" id="paletteGrid">
+            <button class="color-swatch active" data-color="#000000" title="Obsidian Black" style="--c: #000000;">
+              <span class="swatch-check">✓</span>
+            </button>
+            <button class="color-swatch" data-color="#00ff66" title="Matrix Emerald" style="--c: #00ff66;">
+              <span class="swatch-check">✓</span>
+            </button>
+            <button class="color-swatch" data-color="#00e5ff" title="Cyber Aqua" style="--c: #00e5ff;">
+              <span class="swatch-check">✓</span>
+            </button>
+            <button class="color-swatch" data-color="#ffb703" title="Solar Amber" style="--c: #ffb703;">
+              <span class="swatch-check">✓</span>
+            </button>
+            <button class="color-swatch" data-color="#ff007f" title="Synthwave Pink" style="--c: #ff007f;">
+              <span class="swatch-check">✓</span>
+            </button>
+            <button class="color-swatch" data-color="#8b5cf6" title="Hyper Violet" style="--c: #8b5cf6;">
+              <span class="swatch-check">✓</span>
+            </button>
+            <button class="color-swatch" data-color="#ff3344" title="Crimson Glitch" style="--c: #ff3344;">
+              <span class="swatch-check">✓</span>
+            </button>
+            <button class="color-swatch" data-color="#2563eb" title="Royal Cobalt" style="--c: #2563eb;">
+              <span class="swatch-check">✓</span>
+            </button>
+            <button class="color-swatch" data-color="#10b981" title="Eco Mint" style="--c: #10b981;">
+              <span class="swatch-check">✓</span>
+            </button>
+            <button class="color-swatch" data-color="#ffffff" title="Pure Platinum" style="--c: #ffffff;">
+              <span class="swatch-check">✓</span>
+            </button>
+          </div>
+
+          <!-- Custom Color Picker & Hex Input -->
+          <div class="custom-color-row" id="solidColorRow">
+            <div class="color-picker-wrapper">
+              <input type="color" id="nativeColorPicker" value="#000000" aria-label="Visual Color Picker">
+              <label for="nativeColorPicker" class="picker-trigger" id="pickerSwatchPreview" style="background-color: #000000;">
+                <span class="picker-icon">🎨</span>
+              </label>
+            </div>
+            <div class="neu-input-well hex-input-well">
+              <span class="hex-symbol">#</span>
+              <input type="text" id="hexInput" value="000000" maxlength="6" spellcheck="false" placeholder="000000">
+            </div>
+            <span class="color-name-badge" id="colorNameBadge">OBSIDIAN BLACK</span>
+          </div>
+
+          <!-- Gradient Controls (Hidden by default, shown when Gradient selected) -->
+          <div class="gradient-controls-row" id="gradientControlsRow" style="display: none;">
+            <div class="gradient-pickers">
+              <div class="grad-stop">
+                <span class="grad-label">Start:</span>
+                <input type="color" id="gradStartPicker" value="#00e5ff">
+                <input type="text" id="gradStartHex" value="00E5FF" maxlength="6" class="mini-hex-input">
+              </div>
+              <div class="grad-arrow">➔</div>
+              <div class="grad-stop">
+                <span class="grad-label">End:</span>
+                <input type="color" id="gradEndPicker" value="#ff007f">
+                <input type="text" id="gradEndHex" value="FF007F" maxlength="6" class="mini-hex-input">
+              </div>
+            </div>
+            <div class="gradient-presets">
+              <button class="grad-preset-btn" data-s="#00e5ff" data-e="#ff007f" style="background: linear-gradient(135deg, #00e5ff, #ff007f);">Cyberpunk</button>
+              <button class="grad-preset-btn" data-s="#00ff66" data-e="#00e5ff" style="background: linear-gradient(135deg, #00ff66, #00e5ff);">Emerald</button>
+              <button class="grad-preset-btn" data-s="#ffb703" data-e="#ff007f" style="background: linear-gradient(135deg, #ffb703, #ff007f);">Sunset</button>
+              <button class="grad-preset-btn" data-s="#8b5cf6" data-e="#3b82f6" style="background: linear-gradient(135deg, #8b5cf6, #3b82f6);">Space</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. BACKGROUND ALPHA (TRANSPARENT BY DEFAULT) -->
+        <div class="neu-card card-bg">
+          <div class="card-title-row">
+            <h2 class="card-title">Background Alpha</h2>
+            <span class="card-hint">Preserves transparent background for PNG</span>
+          </div>
+
+          <div class="neu-segmented bg-mode-switch">
+            <button class="neu-seg-btn active" id="bgTransparentBtn" data-mode="transparent">
+              <span>✨ Transparent (Default)</span>
+            </button>
+            <button class="neu-seg-btn" id="bgSolidBtn" data-mode="solid">
+              <span>Solid Color</span>
+            </button>
+          </div>
+
+          <!-- Solid Background Color Controls -->
+          <div class="solid-bg-controls" id="solidBgControls" style="display: none;">
+            <div class="solid-bg-row">
+              <span class="sub-label">Background Color:</span>
+              <div class="solid-presets">
+                <button class="mini-swatch active" data-bgcolor="#ffffff" style="background: #ffffff;"></button>
+                <button class="mini-swatch" data-bgcolor="#1e232a" style="background: #1e232a;"></button>
+                <button class="mini-swatch" data-bgcolor="#0f172a" style="background: #0f172a;"></button>
+                <button class="mini-swatch" data-bgcolor="#e6ecf5" style="background: #e6ecf5;"></button>
+              </div>
+              <input type="color" id="bgColorPicker" value="#ffffff" class="mini-color-input">
+              <input type="text" id="bgHexInput" value="FFFFFF" maxlength="6" class="mini-hex-input">
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. QR CODE STYLES & PATTERNS -->
+        <div class="neu-card card-style">
+          <div class="card-title-row">
+            <h2 class="card-title">QR Styles & Patterns</h2>
+            <span class="card-hint">Choose module geometry</span>
+          </div>
+
+          <!-- Module Shape Selector (7 distinct shapes) -->
+          <div class="style-section">
+            <span class="section-label">Module Geometry</span>
+            <div class="style-cards-grid" id="moduleShapeControl">
+              <button class="neu-style-card style-card active" data-shape="squares">
+                <span class="style-icon-preview">■</span>
+                <span class="style-name">Square</span>
+              </button>
+              <button class="neu-style-card style-card" data-shape="dots">
+                <span class="style-icon-preview">●</span>
+                <span class="style-name">Dots</span>
+              </button>
+              <button class="neu-style-card style-card" data-shape="squircles">
+                <span class="style-icon-preview">▢</span>
+                <span class="style-name">Squircle</span>
+              </button>
+              <button class="neu-style-card style-card" data-shape="connected">
+                <span class="style-icon-preview">☍</span>
+                <span class="style-name">Fluid</span>
+              </button>
+              <button class="neu-style-card style-card" data-shape="diamonds">
+                <span class="style-icon-preview">◆</span>
+                <span class="style-name">Diamond</span>
+              </button>
+              <button class="neu-style-card style-card" data-shape="crosses">
+                <span class="style-icon-preview">✚</span>
+                <span class="style-name">Cross</span>
+              </button>
+              <button class="neu-style-card style-card" data-shape="hexagons">
+                <span class="style-icon-preview">⬡</span>
+                <span class="style-name">Hexagon</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Corner Eye Styles -->
+          <div class="style-section" style="margin-top: 1rem;">
+            <span class="section-label">Corner Eye Frame</span>
+            <div class="neu-segmented eye-segmented" id="eyeStyleControl">
+              <button class="neu-seg-btn segment-btn active" data-eye="square">■ Square</button>
+              <button class="neu-seg-btn segment-btn" data-eye="rounded">● Rounded</button>
+              <button class="neu-seg-btn segment-btn" data-eye="orbit">◉ Orbit</button>
+              <button class="neu-seg-btn segment-btn" data-eye="shield">🛡️ Shield</button>
+            </div>
+          </div>
+
+          <!-- Logo Embedding Toggle -->
+          <div class="neu-toggle-card">
+            <label class="custom-switch-label" for="embedLogoToggle">
+              <div class="switch-text">
+                <span class="switch-title">Embed E-Club 3D Emblem</span>
+                <span class="switch-desc">Places official Rubik cube at center with high 30% error redundancy</span>
+              </div>
+              <div class="switch-input-wrap">
+                <input type="checkbox" id="embedLogoToggle">
+                <span class="switch-slider"></span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 5. EXPORT RESOLUTION -->
+        <div class="neu-card card-res">
+          <div class="card-title-row">
+            <h2 class="card-title">Resolution</h2>
+            <span class="card-hint">Export Dimensions</span>
+          </div>
+
+          <div class="neu-segmented" id="resControl">
+            <button class="neu-seg-btn segment-btn" data-res="512">512 px</button>
+            <button class="neu-seg-btn segment-btn active" data-res="1024">1024 px (HD)</button>
+            <button class="neu-seg-btn segment-btn" data-res="2048">2048 px (4K)</button>
+            <button class="neu-seg-btn segment-btn" data-res="4096">4096 px (Print)</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- RIGHT COLUMN: MINIMAL NEUMORPHIC VIEWPORT -->
+      <section class="console-panel right-panel">
+        
+        <div class="neu-card card-viewport viewport-card">
+          <!-- Viewport Toolbar -->
+          <div class="viewport-toolbar">
+            <div class="status-pill-group">
+              <span class="neu-pill-tag" id="transparencyStatusTag">Transparent Alpha</span>
+            </div>
+
+            <!-- Preview backdrop switcher -->
+            <div class="backdrop-switcher" title="Test how your transparent QR looks on different surfaces">
+              <span class="backdrop-label">Backdrop:</span>
+              <div class="neu-segmented mini-segmented">
+                <button class="neu-seg-btn backdrop-btn active" data-backdrop="checkerboard" title="Checkerboard">🏁</button>
+                <button class="neu-seg-btn backdrop-btn" data-backdrop="dark" title="Dark Background">⬛</button>
+                <button class="neu-seg-btn backdrop-btn" data-backdrop="light" title="Light Background">⬜</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- THE CANVAS STAGE (Neumorphic Inset Frame) -->
+          <div class="canvas-viewport-container backdrop-checkerboard" id="canvasContainer">
+            <div class="canvas-center-wrap">
+              <canvas id="qrCanvas" width="1024" height="1024"></canvas>
+            </div>
+          </div>
+
+          <!-- TELEMETRY / INFO ROW -->
+          <div class="telemetry-bar">
+            <div class="telemetry-item">
+              <span class="t-label">Format</span>
+              <span class="t-value" id="tFormat">PNG (RGBA)</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="t-label">Size</span>
+              <span class="t-value" id="tRes">1024 × 1024 px</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="t-label">Redundancy</span>
+              <span class="t-value" id="tEcc">ECC-M (15%)</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="t-label">Matrix</span>
+              <span class="t-value" id="tMatrix">25 × 25</span>
+            </div>
+          </div>
+
+          <!-- PRIMARY ACTION BUTTONS -->
+          <div class="export-action-deck">
+            <!-- DOWNLOAD PNG (PRIMARY) -->
+            <button id="downloadPngBtn" class="neu-primary-btn" title="Download transparent PNG (Shortcut: Ctrl+D)">
+              <span class="btn-icon">⬇</span>
+              <div class="btn-labels">
+                <span class="btn-main-text">Download PNG</span>
+                <span class="btn-sub-text">Transparent Alpha • High Quality</span>
+              </div>
+            </button>
+
+            <!-- SECONDARY ACTIONS -->
+            <div class="secondary-btn-row">
+              <button id="copyPngBtn" class="neu-btn" title="Copy PNG with transparent background to clipboard">
+                <span class="sec-icon">📋</span>
+                <span class="sec-text">Copy to Clipboard</span>
+              </button>
+              <button id="downloadSvgBtn" class="neu-btn" title="Download lossless vector SVG">
+                <span class="sec-icon">📐</span>
+                <span class="sec-text">Download SVG</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Scanner Notice -->
+          <div class="scanner-assurance">
+            <span class="assurance-icon">✓</span>
+            <span class="assurance-text">100% scannable with iOS Camera, Android Camera, & Google Lens</span>
+          </div>
+        </div>
+
+        <!-- SUSTAINABLE INFO FOOTNOTE -->
+        <div class="neu-card eco-card">
+          <div class="eco-card-header">
+            <span class="eco-leaf">🌱</span>
+            <h3>Sustainable Client-Side Architecture</h3>
+          </div>
+          <p class="eco-note">
+            Built following Trend 13 sustainable design: runs 100% locally in your browser. Zero cloud processing, zero data tracking, zero carbon footprint.
+          </p>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="neu-footer">
+      <div class="footer-left">
+        <strong>E-Club Entrepreneurship Cell</strong>
+        <span>• Unleash your Entrepreneurial Spirit</span>
+      </div>
+      <div class="footer-right">
+        <span>Shortcuts: <kbd>T</kbd> Theme &nbsp;|&nbsp; <kbd>Ctrl+D</kbd> Download</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- TOAST NOTIFICATION POPUP -->
+  <div id="toastNotification" class="neu-toast" role="alert">
+    <span class="toast-icon" id="toastIcon">✓</span>
+    <span class="toast-message" id="toastMessage">Action completed</span>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="qrcode.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

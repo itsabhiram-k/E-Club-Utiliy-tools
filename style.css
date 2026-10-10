@@ -1,0 +1,1475 @@
+/* ==========================================================================
+   E CLUB QR UTILITY TOOL — CLEAN MINIMAL NEUMORPHISM DESIGN SYSTEM
+   Zero Animations • Soft Tactile Lighting • Pure Extruded & Inset Surfaces
+   ========================================================================== */
+
+:root {
+  /* DARK NEUMORPHIC THEME (DEFAULT) */
+  --bg-base: #1a1e24;
+  --bg-surface: #1a1e24;
+  --bg-inset: #16191f;
+  
+  --shadow-raised: 6px 6px 14px #101317, -6px -6px 14px #242931;
+  --shadow-raised-sm: 4px 4px 10px #101317, -4px -4px 10px #242931;
+  --shadow-raised-active: 2px 2px 5px #101317, -2px -2px 5px #242931;
+  --shadow-inset: inset 4px 4px 8px #101317, inset -4px -4px 8px #242931;
+  --shadow-inset-sm: inset 2px 2px 5px #101317, inset -2px -2px 5px #242931;
+  
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-accent: #22c55e;
+  
+  --border-subtle: rgba(255, 255, 255, 0.03);
+  --border-focus: #22c55e;
+  
+  --btn-primary-bg: #22c55e;
+  --btn-primary-text: #052e16;
+  --btn-primary-shadow: 5px 5px 12px #101317, -5px -5px 12px #242931;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "Space Grotesk", "Consolas", "SF Mono", monospace;
+}
+
+/* LIGHT NEUMORPHIC THEME */
+[data-theme="light"] {
+  --bg-base: #e8edf5;
+  --bg-surface: #e8edf5;
+  --bg-inset: #e0e6ef;
+  
+  --shadow-raised: 7px 7px 16px #c5cdd9, -7px -7px 16px #ffffff;
+  --shadow-raised-sm: 4px 4px 10px #c5cdd9, -4px -4px 10px #ffffff;
+  --shadow-raised-active: 2px 2px 5px #c5cdd9, -2px -2px 5px #ffffff;
+  --shadow-inset: inset 4px 4px 8px #c2cbda, inset -4px -4px 8px #ffffff;
+  --shadow-inset-sm: inset 2px 2px 5px #c2cbda, inset -2px -2px 5px #ffffff;
+  
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-accent: #0f172a;
+  
+  --border-subtle: rgba(255, 255, 255, 0.6);
+  --border-focus: #0f172a;
+  
+  --btn-primary-bg: #0f172a;
+  --btn-primary-text: #ffffff;
+  --btn-primary-shadow: 5px 5px 14px #b8c2d1, -5px -5px 14px #ffffff;
+}
+
+/* GLOBAL RESETS (NO ANIMATIONS) */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  animation: none !important;
+  transition: none !important;
+}
+
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* SHELL */
+.app-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  padding-left: max(1.5rem, env(safe-area-inset-left));
+  padding-right: max(1.5rem, env(safe-area-inset-right));
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   NEUMORPHIC TOP HEADER
+   ========================================================================== */
+.neu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.75rem;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo {
+  max-height: 44px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.header-center {
+  text-align: center;
+}
+
+.main-title {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+[data-theme="dark"] .main-title {
+  background: linear-gradient(180deg, #ffffff 15%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .main-title {
+  background: linear-gradient(180deg, #0f172a 20%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* Eco badge */
+.eco-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-raised-sm);
+  border-radius: var(--radius-pill);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.eco-icon {
+  font-size: 0.85rem;
+}
+
+/* Neumorphic Header Buttons */
+.neu-icon-btn, .neu-theme-btn {
+  background: var(--bg-surface);
+  border: none;
+  color: var(--text-primary);
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-raised-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  user-select: none;
+}
+
+.neu-icon-btn:active, .neu-theme-btn:active {
+  box-shadow: var(--shadow-inset-sm);
+}
+
+.key-badge {
+  padding: 0.05rem 0.35rem;
+  background: var(--bg-inset);
+  box-shadow: var(--shadow-inset-sm);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .theme-icon-light { display: none; }
+[data-theme="dark"] .theme-icon-dark { display: inline-flex; }
+[data-theme="light"] .theme-icon-light { display: inline-flex; }
+[data-theme="light"] .theme-icon-dark { display: none; }
+
+/* ==========================================================================
+   MAIN TWO-COLUMN WORKSPACE
+   ========================================================================== */
+.main-console {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+@media (max-width: 1040px) {
+  .main-console {
+    grid-template-columns: 1fr;
+  }
+}
+
+.console-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.right-panel {
+  position: sticky;
+  top: 1.5rem;
+  height: fit-content;
+}
+
+/* ==========================================================================
+   NEUMORPHIC CARDS
+   ========================================================================== */
+.neu-card {
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  padding: 1.35rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
+}
+
+.card-hint {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.char-count {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   NEUMORPHIC INSET INPUT WELL
+   ========================================================================== */
+.neu-input-well {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-inset);
+  box-shadow: var(--shadow-inset);
+  border-radius: var(--radius-md);
+  padding: 0.35rem 0.65rem;
+}
+
+.input-icon {
+  font-size: 0.9rem;
+  padding: 0 0.4rem;
+  color: var(--text-muted);
+}
+
+.neu-input-well input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  padding: 0.5rem 0.4rem;
+  min-width: 0;
+}
+
+.neu-input-well input::placeholder {
+  color: var(--text-muted);
+}
+
+.input-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.neu-pill-btn {
+  background: var(--bg-surface);
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-raised-sm);
+}
+
+.neu-pill-btn:active {
+  box-shadow: var(--shadow-inset-sm);
+}
+
+.clear-btn {
+  padding: 0.35rem 0.6rem;
+}
+
+/* Sample Presets */
+.sample-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chips-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.sample-chip {
+  background: var(--bg-surface);
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: var(--shadow-raised-sm);
+}
+
+.sample-chip:active {
+  box-shadow: var(--shadow-inset-sm);
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   NEUMORPHIC SEGMENTED CONTROLS
+   ========================================================================== */
+.neu-segmented {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 0.35rem;
+  background-color: var(--bg-inset);
+  box-shadow: var(--shadow-inset-sm);
+  border-radius: var(--radius-md);
+  padding: 0.35rem;
+}
+
+.neu-seg-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.neu-seg-btn.active {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-raised-sm);
+}
+
+/* Mini Segmented (Backdrop switcher, etc.) */
+.mini-segmented {
+  padding: 0.25rem;
+  gap: 0.25rem;
+}
+
+.mini-segmented .neu-seg-btn {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   COLOR PALETTE GRID & CUSTOM COLOR
+   ========================================================================== */
+.palette-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.color-swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background-color: var(--c);
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-raised-sm);
+}
+
+.color-swatch:active {
+  box-shadow: var(--shadow-inset-sm);
+}
+
+.color-swatch.active {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px var(--c), var(--shadow-raised-sm);
+}
+
+[data-theme="light"] .color-swatch.active {
+  border-color: #0f172a;
+}
+
+.swatch-check {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  display: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));
+}
+
+.color-swatch.active .swatch-check {
+  display: block;
+}
+
+/* Custom Color Controls */
+.custom-color-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.color-picker-wrapper {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-raised-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-picker-wrapper input[type="color"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.picker-trigger {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.picker-icon {
+  font-size: 0.9rem;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.7));
+}
+
+.hex-input-well {
+  width: 130px;
+  padding: 0.25rem 0.6rem;
+}
+
+.hex-symbol {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.hex-input-well input {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.color-name-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: auto;
+}
+
+/* Gradient Controls */
+.gradient-controls-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  background-color: var(--bg-inset);
+  box-shadow: var(--shadow-inset-sm);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+}
+
+.gradient-pickers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.grad-stop {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.grad-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.grad-stop input[type="color"] {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.mini-hex-input {
+  width: 75px;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-raised-sm);
+  border: none;
+  outline: none;
+  padding: 0.25rem 0.45rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.grad-arrow {
+  color: var(--text-muted);
+  font-weight: bold;
+}
+
+.gradient-presets {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.grad-preset-btn {
+  border: none;
+  color: #ffffff;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-raised-sm);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.grad-preset-btn:active {
+  box-shadow: var(--shadow-inset-sm);
+}
+
+/* Solid Background Controls */
+.solid-bg-controls {
+  padding-top: 0.5rem;
+}
+
+.solid-bg-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.sub-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.solid-presets {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.mini-swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--shadow-raised-sm);
+}
+
+.mini-swatch:active {
+  box-shadow: var(--shadow-inset-sm);
+}
+
+.mini-color-input {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   QR STYLES: NEUMORPHIC STYLE CARDS
+   ========================================================================== */
+.style-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.style-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+}
+
+@media (max-width: 600px) {
+  .style-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.neu-style-card {
+  background-color: var(--bg-surface);
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised-sm);
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.neu-style-card:active {
+  box-shadow: var(--shadow-inset-sm);
+}
+
+.neu-style-card.active {
+  background-color: var(--bg-inset);
+  box-shadow: var(--shadow-inset);
+  color: var(--text-primary);
+}
+
+.style-icon-preview {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.neu-style-card.active .style-icon-preview {
+  color: var(--text-accent);
+}
+
+.style-name {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.neu-style-card.active .style-name {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Neumorphic Toggle Card */
+.neu-toggle-card {
+  background-color: var(--bg-inset);
+  box-shadow: var(--shadow-inset-sm);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.1rem;
+  margin-top: 0.65rem;
+}
+
+.custom-switch-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.switch-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.switch-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.switch-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.switch-input-wrap {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch-input-wrap input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-inset-sm);
+  border-radius: 24px;
+}
+
+.switch-slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--text-muted);
+  border-radius: 50%;
+  box-shadow: var(--shadow-raised-sm);
+}
+
+.switch-input-wrap input:checked + .switch-slider {
+  background-color: var(--text-accent);
+}
+
+.switch-input-wrap input:checked + .switch-slider::before {
+  transform: translateX(20px);
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   RIGHT COLUMN: NEUMORPHIC VIEWPORT
+   ========================================================================== */
+.viewport-card {
+  gap: 1.15rem;
+}
+
+.viewport-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.neu-pill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-raised-sm);
+  border-radius: var(--radius-pill);
+  color: var(--text-secondary);
+}
+
+.backdrop-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.backdrop-label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* CANVAS CONTAINER (NEUMORPHIC INSET WELL) */
+.canvas-viewport-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 420px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-inset);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Checkerboard Pattern for transparent preview */
+.backdrop-checkerboard {
+  background-color: #1a1e24;
+  background-image: 
+    linear-gradient(45deg, #222730 25%, transparent 25%), 
+    linear-gradient(-45deg, #222730 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #222730 75%), 
+    linear-gradient(-45deg, transparent 75%, #222730 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+[data-theme="light"] .backdrop-checkerboard {
+  background-color: #e8edf5;
+  background-image: 
+    linear-gradient(45deg, #d8e0eb 25%, transparent 25%), 
+    linear-gradient(-45deg, #d8e0eb 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #d8e0eb 75%), 
+    linear-gradient(-45deg, transparent 75%, #d8e0eb 75%);
+}
+
+.backdrop-dark {
+  background-color: #0d1015 !important;
+  background-image: none !important;
+}
+
+.backdrop-light {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+.canvas-center-wrap {
+  width: 82%;
+  height: 82%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#qrCanvas {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* TELEMETRY BAR */
+.telemetry-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  background-color: var(--bg-inset);
+  box-shadow: var(--shadow-inset-sm);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1rem;
+}
+
+@media (max-width: 600px) {
+  .telemetry-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.telemetry-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.t-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.t-value {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* EXPORT ACTION BUTTONS */
+.export-action-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.neu-primary-btn {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.95rem 1.35rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  box-shadow: var(--btn-primary-shadow);
+}
+
+.neu-primary-btn:active {
+  box-shadow: var(--shadow-inset-sm);
+  transform: translateY(1px);
+}
+
+.btn-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.btn-labels {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.btn-main-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.btn-sub-text {
+  font-size: 0.68rem;
+  opacity: 0.85;
+}
+
+.secondary-btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.neu-btn {
+  background-color: var(--bg-surface);
+  border: none;
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.95rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-raised-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.neu-btn:active {
+  box-shadow: var(--shadow-inset-sm);
+}
+
+/* Scanner Assurance */
+.scanner-assurance {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: var(--bg-inset);
+  box-shadow: var(--shadow-inset-sm);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.95rem;
+}
+
+.assurance-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--text-accent);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .assurance-icon {
+  color: #052e16;
+}
+
+.assurance-text {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+/* ECO CARD */
+.eco-card {
+  gap: 0.5rem;
+}
+
+.eco-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.eco-leaf {
+  font-size: 0.95rem;
+}
+
+.eco-card-header h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.eco-note {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.neu-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.95rem 1.5rem;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised-sm);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: auto;
+}
+
+.footer-left strong {
+  color: var(--text-primary);
+}
+
+kbd {
+  background: var(--bg-inset);
+  box-shadow: var(--shadow-inset-sm);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION
+   ========================================================================== */
+.neu-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-raised);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  max-width: calc(100vw - 2rem);
+}
+
+.neu-toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toast-icon {
+  font-size: 1rem;
+  color: var(--text-accent);
+}
+
+.toast-message {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   RESPONSIVE — TABLET  (≤ 900px)
+   ========================================================================== */
+@media (max-width: 900px) {
+  /* Header — three-zone → centered stack */
+  .neu-header {
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding: 1rem 1.25rem;
+    justify-content: space-between;
+  }
+
+  .header-center {
+    order: 3;
+    flex: 1 1 100%;
+  }
+
+  .main-title {
+    font-size: 1.35rem;
+    text-align: center;
+  }
+
+  .header-left {
+    order: 1;
+  }
+
+  .header-right {
+    order: 2;
+  }
+
+  /* Right panel: un-sticky so it flows after left panel */
+  .right-panel {
+    position: static;
+    height: auto;
+  }
+
+  /* Canvas viewport: slightly smaller max-height */
+  .canvas-viewport-container {
+    max-height: 360px;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — LARGE PHONE  (≤ 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* App wrapper: tighter padding */
+  .app-wrapper {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  /* Header: full stack */
+  .neu-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.9rem 1rem;
+    text-align: center;
+  }
+
+  .header-left,
+  .header-center,
+  .header-right {
+    order: unset;
+    flex: unset;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-right {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  /* Hide eco badge on small screens to save space */
+  .eco-badge {
+    display: none;
+  }
+
+  /* Logo slightly smaller */
+  .brand-logo {
+    max-height: 36px;
+  }
+
+  /* Main title */
+  .main-title {
+    font-size: 1.25rem;
+  }
+
+  /* Ensure min touch target size for all interactive elements */
+  .neu-icon-btn,
+  .neu-theme-btn,
+  .neu-pill-btn,
+  .neu-seg-btn,
+  .sample-chip,
+  .color-swatch,
+  .neu-primary-btn,
+  .neu-btn,
+  .neu-style-card {
+    min-height: 44px;
+  }
+
+  .neu-pill-btn,
+  .clear-btn {
+    min-height: 36px;
+    padding: 0.4rem 0.85rem;
+  }
+
+  /* Cards: tighter padding */
+  .neu-card {
+    padding: 1.1rem 1.1rem;
+    gap: 0.85rem;
+  }
+
+  /* URL input well: let it wrap on tiny screens */
+  .neu-input-well {
+    flex-wrap: wrap;
+  }
+
+  .neu-input-well input {
+    min-width: 0;
+    font-size: 0.9rem;
+  }
+
+  .input-actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 0.25rem;
+  }
+
+  /* Color swatches — bigger touch targets */
+  .color-swatch {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* Custom color row: allow wrapping */
+  .custom-color-row {
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .color-name-badge {
+    margin-left: 0;
+  }
+
+  /* Hex input: stretch more */
+  .hex-input-well {
+    flex: 1;
+    width: auto;
+  }
+
+  /* Gradient pickers: stack on mobile */
+  .gradient-pickers {
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+  }
+
+  .grad-arrow {
+    display: none;
+  }
+
+  /* Style cards: 4 cols on tablet → 2 cols here */
+  .style-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Canvas viewport */
+  .canvas-viewport-container {
+    max-height: 300px;
+  }
+
+  /* Telemetry 2 col */
+  .telemetry-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Secondary buttons: stack */
+  .secondary-btn-row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  /* Footer: stack */
+  .neu-footer {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+    padding: 0.9rem 1rem;
+  }
+
+  /* Toast: centered bottom */
+  .neu-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    right: 1rem;
+    max-width: 100%;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — SMALL PHONE  (≤ 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  /* Minimal padding */
+  .app-wrapper {
+    padding: 0.75rem;
+    gap: 0.85rem;
+  }
+
+  /* Cards even tighter */
+  .neu-card {
+    padding: 0.95rem 0.95rem;
+    border-radius: var(--radius-md);
+  }
+
+  /* Font size reduction for readability */
+  html {
+    font-size: 15px;
+  }
+
+  .main-title {
+    font-size: 1.1rem;
+  }
+
+  .card-title {
+    font-size: 0.92rem;
+  }
+
+  /* Input placeholder text shorter feel */
+  .neu-input-well input {
+    font-size: 0.85rem;
+  }
+
+  /* Segmented controls: smaller text */
+  .neu-seg-btn {
+    font-size: 0.72rem;
+    padding: 0.45rem 0.5rem;
+  }
+
+  /* Style cards: stay 2-col with less gap */
+  .style-cards-grid {
+    gap: 0.5rem;
+  }
+
+  /* Canvas: compact */
+  .canvas-viewport-container {
+    max-height: 260px;
+    border-radius: var(--radius-md);
+  }
+
+  /* Primary button: tighter on small screens */
+  .neu-primary-btn {
+    padding: 0.8rem 1rem;
+    gap: 0.6rem;
+  }
+
+  .btn-main-text {
+    font-size: 0.95rem;
+  }
+
+  .btn-sub-text {
+    font-size: 0.64rem;
+  }
+
+  /* Gradient presets: smaller pills */
+  .grad-preset-btn {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.68rem;
+  }
+
+  /* Swatches: slightly smaller to fit more */
+  .color-swatch {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Telemetry: 2 col still fine */
+  .t-value {
+    font-size: 0.7rem;
+  }
+
+  /* Toggle card: adjust for small width */
+  .neu-toggle-card {
+    padding: 0.75rem 0.85rem;
+  }
+
+  /* Footer: hide shortcuts on tiny screens */
+  .footer-right {
+    display: none;
+  }
+
+  /* Toast: full width at bottom */
+  .neu-toast {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ==========================================================================
+   TOUCH DEVICE HELPERS
+   ========================================================================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove active-state box-shadow glitches on tap-hold */
+  .neu-primary-btn:active,
+  .neu-btn:active,
+  .neu-pill-btn:active,
+  .neu-seg-btn:active,
+  .neu-style-card:active,
+  .color-swatch:active,
+  .sample-chip:active {
+    opacity: 0.85;
+  }
+
+  /* Larger tap zone for color swatches */
+  .color-swatch {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Ensure backdrop buttons are tappable */
+  .neu-icon-btn,
+  .neu-theme-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
